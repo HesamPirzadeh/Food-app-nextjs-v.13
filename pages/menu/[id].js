@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import React from "react";
+import Detailpage from "../../components/templates/Detailpage";
 
 function Detailfood({ data }) {
   const router = useRouter();
   if (router.isFallback) return <h3>Loading ...</h3>;
-  return <div>Detailfood</div>;
+  return <Detailpage {...data} />;
 }
 
 export default Detailfood;
