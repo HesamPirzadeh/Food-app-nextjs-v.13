@@ -4,7 +4,6 @@ import Dollar from "../icons/Dollar";
 import Link from "next/link";
 
 function Card({ data }) {
-  console.log(data.details);
   const { id, name, price, discount, details } = data;
   return (
     <div className={styles.container}>

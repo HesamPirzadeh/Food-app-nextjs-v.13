@@ -4,9 +4,17 @@ import Card from "../modules/Card";
 import styles from "./Categorypage.module.css";
 
 function Categorypage({ data }) {
+  console.log(data);
   const router = useRouter();
 
   const [query, setQuery] = useState({ difficulty: "", time: "" });
+
+  useEffect(() => {
+    const { difficulty, time } = router.query;
+    if (query.difficulty !== difficulty || query.time !== time) {
+      setQuery({ difficulty, time });
+    }
+  }, []);
 
   const changeHandler = (e) => {
     setQuery({ ...query, [e.target.name]: e.target.value });
@@ -40,6 +48,12 @@ function Categorypage({ data }) {
             <option value="less">Less than 30 min</option>
           </select>
           <button onClick={searchHandler}>Search</button>
+        </div>
+        <div className={styles.cards}>
+          {!data.length ? <img src="../images/search.png" /> : null}
+          {data.map((food) => {
+            return <Card key={food.id} data={food} />;
+          })}
         </div>
       </div>
     </div>

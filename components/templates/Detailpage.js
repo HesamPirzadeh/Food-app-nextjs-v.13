@@ -21,19 +21,21 @@ function Detailpage(props) {
       <div className={styles.subContainer}>
         <div className={styles.banner}>
           <img src={`/images/${id}.jpeg`} />
+          <div>
+          <h3>{name}</h3>
+          <span className={styles.location}>
+            <Location />
+            {details[0].Cuisine}
+          </span>
+          <span className={styles.price}>
+            <Dollar />
+            {discount ? (price * (100 - discount)) / 100 : price}
+          </span>
+          {discount ? (
+            <span className={styles.discount}>{discount} $OFF</span>
+          ) : null}
+          </div>
         </div>
-        <h3>{name}</h3>
-        <span className={styles.location}>
-          <Location />
-          {details[0].Cuisine}
-        </span>
-        <span className={styles.price}>
-          <Dollar />
-          {discount ? (price * (100 - discount)) / 100 : price}
-        </span>
-        {discount ? (
-          <span className={styles.discount}>{discount} $OFF</span>
-        ) : null}
       </div>
       <div className={styles.introduction}>
         <p>{introduction}</p>

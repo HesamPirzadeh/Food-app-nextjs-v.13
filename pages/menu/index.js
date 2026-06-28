@@ -12,11 +12,10 @@ function index({ data }) {
 export default index;
 
 export async function getStaticProps() {
-  const api = await fetch("http://localhost:4000/data");
+  const api = await fetch(`${process.env.BASE_URL}/data`);
   const data = await api.json();
-  console.log('ragenerated');
   return {
     props: { data },
-    revalidate: 10
+    revalidate: +process.env.REVALIDATE,
   };
 }
